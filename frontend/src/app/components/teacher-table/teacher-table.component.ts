@@ -34,7 +34,7 @@ export class TeacherTableComponent implements OnInit {
     this.router.navigate(['editTeacher'], navigationExtras)
   }
 
-  initializeDB(){
+  initializeDB() {
     this.service.initializeDB().subscribe((response) => {
       console.log('DB is Initialized')
     }, (error) => {
@@ -60,7 +60,7 @@ export class TeacherTableComponent implements OnInit {
     })
   }
 
-  search(value) {
+  search(value = "Saman De Silva") {
     let foundItems = [];
     if (value.length <= 0) {
       this.getTeacherData();
