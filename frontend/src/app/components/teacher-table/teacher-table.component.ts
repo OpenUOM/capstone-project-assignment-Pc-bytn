@@ -34,7 +34,7 @@ export class TeacherTableComponent implements OnInit {
     this.router.navigate(['editTeacher'], navigationExtras)
   }
 
-  initializeDB() {
+  initializeDB(){
     this.service.initializeDB().subscribe((response) => {
       console.log('DB is Initialized')
     }, (error) => {
@@ -60,17 +60,13 @@ export class TeacherTableComponent implements OnInit {
     })
   }
 
-  search(value = "Saman De Silva") {
-    let foundItems = [];
+  search(value: string) {
     if (value.length <= 0) {
       this.getTeacherData();
     } else {
-      let b = this.teacherData.filter((teacher) => {
-        if (teacher[0].name.toLowerCase().indexOf(value) > -1) {
-          foundItems.push(teacher)
-        }
+      this.teacherData = this.teacherData.filter((teacher) => {
+        return teacher[0].name.toLowerCase().indexOf(value.toLowerCase()) > -1;
       });
-      this.teacherData = foundItems;
     }
   }
 
